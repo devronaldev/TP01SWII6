@@ -85,5 +85,53 @@ namespace TP01SWII6.Repository
             Console.WriteLine(livro3.ToString());
             Console.WriteLine(livro3.GetAuthorNames());
         }
+
+        public static Book BuscarLivro(string name)
+        {
+            Book livro = new Book();
+            using (var file = File.OpenText(nameFile)) 
+            {
+                while (!file.EndOfStream)
+                {
+                    //REALIZAR LEITURA DA LINHA
+                    var textoLivro = file.ReadLine();
+                    
+                    //VERIFICA SE EXISTE INFORMAÇÃO NA LINHA. CASO NÃO, PULA O LOOP WHILE
+                    if (string.IsNullOrEmpty(textoLivro))
+                    {
+                        continue;
+                    }
+
+                    //SEPARA AS INFORMAÇÕES DO LIVRO
+                    var infoLivro = textoLivro.Split(';');
+                    
+                    //VERIFICA SE O NOME DO LIVRO É IGUAL AO PROCURADO
+                    if (infoLivro[0].Equals(name))
+                    {
+                        //SEPARA DEVIDAMENTE AS INFORMAÇÕES DO LIVRO E DOS AUTORES CORRETAMENTE
+                        livro.Name = infoLivro[0];
+                        livro.Price = double.Parse(infoLivro[1]);
+                        livro.Qty = int.Parse(infoLivro[2]);
+                        string[] authors = infoLivro[3].Split('/');
+                        foreach (var item in authors)
+                        {
+                            var infoAuthor = item.Split(',');
+                            Author author = new Author()
+                            {
+                                Name = infoAuthor[0],
+                                Email = infoAuthor[1],
+                                Gender = char.Parse(infoAuthor[2])
+                            };
+                            livro.Authors.Append(author);
+                        }
+
+                        //APÓS TER O OBJETO COMPLETO ELE SAI DO LOOP WHILE
+                        continue;
+                    }
+                }
+            }
+
+            return livro;
+        }
     } 
 }

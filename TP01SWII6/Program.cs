@@ -24,4 +24,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 RepositoryBooks.Testar();
+Console.WriteLine(RepositoryBooks.BuscarLivro("Minha mãe é uma peça").GetAuthorNames());
 app.Run();
