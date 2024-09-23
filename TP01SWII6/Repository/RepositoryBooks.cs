@@ -1,7 +1,12 @@
 ﻿using TP01SWII6.Models;
-using System.IO;
-using System.Collections.Generic;
-using System.Text;
+
+/* AUTORES:
+ Nome: Ronald Pereira Evangelista
+ Prontuário: CB3020282
+ 
+ Nome: Kethellen Cristine Simão dos Santos
+ Prontuário: CB3011836
+ */
 
 namespace TP01SWII6.Repository
 {

@@ -1,5 +1,13 @@
 using TP01SWII6.Repository;
 
+/* AUTORES:
+ Nome: Ronald Pereira Evangelista
+ Prontuário: CB3020282
+ 
+ Nome: Kethellen Cristine Simão dos Santos
+ Prontuário: CB3011836
+ */
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
