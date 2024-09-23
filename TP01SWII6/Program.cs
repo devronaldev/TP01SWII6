@@ -1,3 +1,5 @@
+using TP01SWII6.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -21,5 +23,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+RepositoryBooks.Testar();
 app.Run();

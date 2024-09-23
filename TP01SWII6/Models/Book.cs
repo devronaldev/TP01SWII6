@@ -16,17 +16,13 @@ namespace TP01SWII6.Models
             Authors = authors;
             Qty = qty;
         }
-
-        public Book() 
-        {
-
-        }
         public Book(string name, Author[] authors, double price) 
         { 
             Name = name; 
             Price = price; 
             Authors = authors;
         }
+        public Book() { }
 
         override public string ToString()
         {
@@ -48,10 +44,10 @@ namespace TP01SWII6.Models
             StringBuilder answer = new StringBuilder();
             foreach (var author in Authors)
             {
-                answer.Append($"{author.Name},");
+                answer.Append($"{author.Name}, ");
    
             }
-            answer.Remove(answer.Length - 1, 1);
+            answer.Remove(answer.Length - 2, 2);
             return answer.ToString();
         }
     }
