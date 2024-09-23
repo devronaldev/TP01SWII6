@@ -1,4 +1,7 @@
 ﻿using TP01SWII6.Models;
+using System.IO;
+using System.Collections.Generic;
+using System.Text;
 
 namespace TP01SWII6.Repository
 {
@@ -89,6 +92,12 @@ namespace TP01SWII6.Repository
         public static Book BuscarLivro(string name)
         {
             Book livro = new Book();
+            if (!File.Exists(nameFile))
+            {
+                Console.WriteLine($"O arquivo {nameFile} não foi encontrado.");
+                return null;
+            }
+
             using (var file = File.OpenText(nameFile)) 
             {
                 while (!file.EndOfStream)
@@ -104,33 +113,46 @@ namespace TP01SWII6.Repository
 
                     //SEPARA AS INFORMAÇÕES DO LIVRO
                     var infoLivro = textoLivro.Split(';');
-                    
+
                     //VERIFICA SE O NOME DO LIVRO É IGUAL AO PROCURADO
-                    if (infoLivro[0].Equals(name))
+                    if (infoLivro[0].Equals(name, StringComparison.OrdinalIgnoreCase))
                     {
                         //SEPARA DEVIDAMENTE AS INFORMAÇÕES DO LIVRO E DOS AUTORES CORRETAMENTE
-                        livro.Name = infoLivro[0];
-                        livro.Price = double.Parse(infoLivro[1]);
-                        livro.Qty = int.Parse(infoLivro[2]);
-                        string[] authors = infoLivro[3].Split('/');
+
+                        var authors = infoLivro[3].Split('/');
+                        List<Author> authorsList = new List<Author>();
+
                         foreach (var item in authors)
                         {
                             var infoAuthor = item.Split(',');
-                            Author author = new Author()
+
+                            if (infoAuthor.Length == 3)
                             {
-                                Name = infoAuthor[0],
-                                Email = infoAuthor[1],
-                                Gender = char.Parse(infoAuthor[2])
-                            };
-                            livro.Authors.Append(author);
+                                Author author = new Author()
+                                {
+                                    Name = infoAuthor[0].Trim(),
+                                    Email = infoAuthor[1].Trim(),
+                                    Gender = char.Parse(infoAuthor[2].Trim())
+                                };
+                                authorsList.Add(author);
+                            }
                         }
 
-                        //APÓS TER O OBJETO COMPLETO ELE SAI DO LOOP WHILE
-                        continue;
+                        //ATUALIZA INSTANCIA DO LIVRO
+                        livro = new Book
+                        {
+                            Name = infoLivro[0].Trim(),
+                            Price = double.Parse(infoLivro[1].Trim()),
+                            Qty = int.Parse(infoLivro[2].Trim()),
+                            Authors = authorsList.ToArray()
+                        };
+                        
+
+                        //APÓS TER O OBJETO COMPLETO ELE QUEBRA O LOOP WHILE
+                        break;
                     }
                 }
             }
-
             return livro;
         }
     } 

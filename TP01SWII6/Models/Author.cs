@@ -6,6 +6,9 @@
         public string Email { get; set; }
         public char Gender { get; set; }
 
-
+        public Author() 
+        { 
+        
+        }
     }
 }

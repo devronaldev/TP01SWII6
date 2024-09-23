@@ -22,20 +22,25 @@ namespace TP01SWII6.Models
             Price = price; 
             Authors = authors;
         }
-        public Book() { }
+        public Book() 
+        {
+            Authors = new Author[0];
+        }
 
         override public string ToString()
         {
             StringBuilder answer = new StringBuilder();
             answer.Append($"Book[name={Name},authors=");
+            answer.Append("{");
             foreach (var author in Authors)
             {
-                answer.Append("{Author[");
+                answer.Append("Author[");
                 answer.Append($"name={author.Name},");
                 answer.Append($"email={author.Email},");
                 answer.Append($"gender={author.Gender}]");
             }
-            answer.Append($"price={Price},{Qty}]");
+            answer.Append("}");
+            answer.Append($"price={Price},qty={Qty}]");
             return answer.ToString();
         }
 

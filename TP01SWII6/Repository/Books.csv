@@ -1,1 +1,5 @@
-Minha mãe é uma peça; 50.20; 30; Pedro Pacheco, Pedropacheco@gmail.com, f / Ronald da Gama, RonaldGama@gmail.com, m
+Título do Livro;Preço;Quantidade;Autor 1,autor1@example.com,m / Autor 2,autor2@example.com,f
+O Hobbit;45.90;20;J.R.R. Tolkien,jrr.tolkien@example.com,m / Outro Autor,outroautor@example.com,m
+A Guerra dos Tronos;50.20;15;George R.R. Martin,george.martin@example.com,m / Co-autor,coautor@example.com,m
+Harry Potter e a Pedra Filosofal;39.99;25;J.K. Rowling,jk.rowling@example.com,f
+O Senhor dos Anéis;55.00;10;J.R.R. Tolkien,jrr.tolkien@example.com,m

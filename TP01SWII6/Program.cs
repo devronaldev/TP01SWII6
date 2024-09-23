@@ -24,5 +24,13 @@ app.UseAuthorization();
 
 app.MapControllers();
 RepositoryBooks.Testar();
-Console.WriteLine(RepositoryBooks.BuscarLivro("Minha mãe é uma peça").GetAuthorNames());
+var livro = RepositoryBooks.BuscarLivro("O Hobbit");
+if (livro != null)
+{
+    Console.WriteLine(livro.ToString());
+}
+else
+{
+    Console.WriteLine("Livro não encontrado");
+}
 app.Run();
