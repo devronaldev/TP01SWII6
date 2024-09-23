@@ -1,0 +1,6 @@
+@TP01SWII6_HostAddress = http://localhost:5115
+
+GET {{TP01SWII6_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
