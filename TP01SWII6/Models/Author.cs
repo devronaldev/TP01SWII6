@@ -2,7 +2,7 @@
  Nome: Ronald Pereira Evangelista
  Prontuário: CB3020282
  
- Nome: Kethellen Cristine Simão dos Santos
+ Nome: Ketheleen Cristine Simão dos Santos
  Prontuário: CB3011836
  */
 
